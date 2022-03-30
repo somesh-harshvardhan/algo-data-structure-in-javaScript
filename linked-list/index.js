@@ -100,6 +100,43 @@ class SinglyLinkedList {
         return currentNode
     }
 
+
+    reverseList(){
+       
+        let first = this.head;
+        this.tail = this.head;
+        let second = first.next
+
+        while(second){
+          let temp = second.next;
+
+           second.next=first;
+           first = second;
+           second=temp;
+        }
+        this.head.next = null;
+        this.head=first
+         
+        // return this
+    }
+    reversListEasyWay(){
+
+        let prev = null;
+        let next = null;
+        
+        let head  = this.head;
+       
+        while(head !== null){
+            next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
+        this.head = prev;
+
+        
+
+    }
 }
 
 const list = new SinglyLinkedList(200);
@@ -109,7 +146,9 @@ list.prepend(40)
 list.insert(2,420)
 list.insert(2,69)
 list.remove(2)
-// console.log(list.printList())
+// list.reverseList()
+list.reversListEasyWay()
+console.log(list.printList())
 
 
 
@@ -222,6 +261,7 @@ class DoublyLinkedList{
         return array
 
     }
+
 }
 
 const doubleList = new DoublyLinkedList(20);
@@ -229,5 +269,5 @@ doubleList.append(30)
 doubleList.append(40)
 doubleList.prepend(10)
 doubleList.insert(1,60)
-console.log(doubleList.printList())
-console.log(doubleList.traverseBackwards())
+// console.log(doubleList.printList())
+// console.log(doubleList.traverseBackwards())
